@@ -1,52 +1,107 @@
-* {
-  font-size: 16px;
-}
-
-h1 {
-  font-size: 30px;
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f4f3f4;
 }
 
 body {
-  background-color: #00c3ffbd;
-}
-
-nav .logo {
-  display: block;
-  background-color: #fff;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 40px;
-  margin-top: 10px;
-  width: 80%;
-}
-
-nav {
-  background-color: #fff;
-  color: #000;
-  padding: 20px;
-  position: fixed;
-  width: 230px;
-  height: 100%;
   margin: 0;
-}
-
-nav ul {
-  list-style: none;
   padding: 0;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #323f52;
+  color: #f4f3f4;
+}
+
+.sidebar-logo {
+  display: block;
+  padding: 20px;
+  margin: auto;
+  width: auto;
+}
+
+.sidebar-list {
+  height: auto;
   margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
-nav ul li {
-  padding: 10px;
+.sidebar-list .row.list-container,
+.sidebar-list .row .sublist {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-a:link,
-a:hover {
-  color: #000;
-  text-decoration: none;
+.sidebar-list .row ul {
+  padding: 0;
 }
 
-a:visited {
-  color: #000;
-  text-decoration: none;
+.sidebar-list .row.list-container:hover,
+.sidebar-list .row .sublist:hover {
+  cursor: pointer;
+  background-color: #2c3745;
 }
+
+.sidebar-list .row.list-container#active {
+  background-color: #2c3745;
+}
+
+.sidebar-list .row.sublist-container#active {
+  background-color: #2c3745;
+}
+
+.row.list-container {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-container #icon {
+  flex: 3;
+  display: grid;
+  place-items: center;
+}
+
+.list-container #title {
+  flex: 6;
+}
+
+.list-container #arrow {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.row.no-arrow.list-container #icon {
+  flex: 3;
+  display: grid;
+  place-items: center;
+}
+
+.row.no-arrow.list-container #title {
+  flex: 7;
+}
+
+/* .sublist-container {
+  margin: 0;
+  padding: 0;
+}
+
+.sublist {
+  display: block;
+  padding: 10px 20px;
+  margin: 0;
+} */
