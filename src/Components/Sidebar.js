@@ -7,11 +7,11 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 function Sidebar(props) {
   const path = useLocation();
-  const [sublistVisible, setSublistVisible] = useState(false);
+  const [sublistVisible, setSublistVisible] = useState(null);
   const [arrowRotation, setArrowRotation] = useState(false);
 
   function toggleSublist(index) {
-    setSublistVisible(sublistVisible === index ? false : index);
+    setSublistVisible(sublistVisible === index ? "" : index);
   }
 
   return (
@@ -41,11 +41,7 @@ function Sidebar(props) {
                   </div>
                 </Link>
               ) : (
-                <Link
-                  to={value.path}
-                  className="row list-container"
-                  id={isActive && "active"}
-                >
+                <div className="row list-container" id={isActive && "active"}>
                   <div
                     className="row list-container"
                     onClick={() => toggleSublist(key)}
@@ -64,23 +60,19 @@ function Sidebar(props) {
                       />
                     )}
                   </div>
-                </Link>
+                </div>
               )}
 
               {value.hasSubList && (
                 <ul
                   className={`sublist ${
-                    sublistVisible === key ? false : "hidden"
+                    sublistVisible === key ? "" : "hidden"
                   }`}
                 >
                   {value.subList.map((subValue, subKey) => {
                     const isActive = path.pathname.includes(subValue.path);
                     return (
-                      <li
-                        key={subKey}
-                        className="row sublist"
-                        // id={isActive && "active"}
-                      >
+                      <li key={subKey} className="row sublist">
                         <Link to={subValue.path}>
                           <div
                             className="row sublist-container"

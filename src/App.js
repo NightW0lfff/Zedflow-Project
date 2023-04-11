@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <container>
         <Sidebar />
-        {/* <h1>React Navigation Bar</h1> */}
       </container>
     </div>
   );

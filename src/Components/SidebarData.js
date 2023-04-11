@@ -37,7 +37,7 @@ const SidebarData = [
   {
     title: "Stock",
     icon: <InventoryIcon />,
-    path: "/Stock",
+    path: "/stock",
     hasSubList: true,
     subList: [
       {
