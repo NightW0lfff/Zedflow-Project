@@ -6,6 +6,7 @@ import { SidebarData } from "./SidebarData";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 function Sidebar(props) {
+  // Get the current path
   const path = useLocation();
   const [sublistVisible, setSublistVisible] = useState(null);
   const [arrowRotation, setArrowRotation] = useState(false);
@@ -15,77 +16,89 @@ function Sidebar(props) {
   }
 
   return (
+    // Sidebar Container
     <div className="sidebar">
-      <div className="sidebar-header">
-        <a href="/Home" className="sidebar-logo">
+      {/* Sidebar Header */}
+      <div className="header">
+        <a href="/Home" className="logo">
           <img src="/zedflow-logo.png" alt="Zedflow Logo" className="logo" />
         </a>
       </div>
-      <ul className="sidebar-list">
+      {/* Sidebar List */}
+      <ul className="list">
         {SidebarData.map((value, key) => {
+          // Check if the current path is the same as the path in the sidebar data
           const isActive = path.pathname.includes(value.path);
           return (
             <li
               key={key}
-              className={`row ${value.hasSubList ? "" : "no-arrow"}`}
+              // If the sidebar item has a sublist, add the class "no-arrow" to the list item
+              className={value.hasSubList ? "" : "no-arrow"}
             >
               {!value.hasSubList ? (
+                // If the sidebar item has no sublist, add the class "no-arrow" to the list item
                 <Link
                   to={value.path}
-                  className="row no-arrow list-container"
+                  className="list-container"
                   id={isActive && "active"}
                 >
-                  <div className="row no-arrow list-container">
-                    <div id="icon">{value.icon}</div>
-                    <div id="title">{value.title}</div>
-                  </div>
+                  <i id="icon">{value.icon}</i>
+                  <span id="title">{value.title}</span>
                 </Link>
               ) : (
-                <div className="row list-container" id={isActive && "active"}>
-                  <div
-                    className="row list-container"
-                    onClick={() => toggleSublist(key)}
-                    id={isActive && "active"}
-                  >
-                    <div id="icon">{value.icon}</div>
-                    <div id="title">{value.title}</div>
-                    {value.hasSubList && (
-                      <KeyboardArrowRightIcon
-                        id="arrow"
-                        onClick={() => {
-                          toggleSublist(key);
-                          setArrowRotation(!arrowRotation);
-                        }}
-                        className={sublistVisible === key ? "rotate" : ""}
-                      />
-                    )}
-                  </div>
+                // <div className="row list-container" id={isActive && "active"}>
+                <div
+                  className="list-container"
+                  onClick={() => toggleSublist(key)}
+                  id={isActive && "active"}
+                >
+                  <i id="icon">{value.icon}</i>
+                  <span id="title">{value.title}</span>
+                  {value.hasSubList && (
+                    <KeyboardArrowRightIcon
+                      id="arrow"
+                      onClick={() => {
+                        toggleSublist(key);
+                        setArrowRotation(!arrowRotation);
+                      }}
+                      className={sublistVisible === key ? "rotate" : ""}
+                    />
+                  )}
                 </div>
+                // </div>
               )}
 
               {value.hasSubList && (
-                <ul
-                  className={`sublist ${
-                    sublistVisible === key ? "" : "hidden"
-                  }`}
+                <div
+                  className="sidebar-sublist"
+                  // id={sublistVisible === key ? "active" : ""}
                 >
-                  {value.subList.map((subValue, subKey) => {
-                    const isActive = path.pathname.includes(subValue.path);
-                    return (
-                      <li key={subKey} className="row sublist">
-                        <Link to={subValue.path}>
-                          <div
-                            className="row sublist-container"
-                            id={isActive && "active"}
-                          >
-                            <div></div>
-                            <div id="title">{subValue.title}</div>
-                          </div>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+                  {/* If the sublist is hidden, add the class "hidden" to the list item */}
+                  <ul
+                    className={`sublist ${
+                      sublistVisible === key ? "" : "hidden"
+                    }`}
+                  >
+                    {/* Create a sublist for each list item that has Sublist */}
+                    {value.subList.map((subValue, subKey) => {
+                      // Check if the current path is the same as the path in the sidebar data
+                      const isActive = path.pathname.includes(subValue.path);
+                      return (
+                        <li key={subKey} className="sublist">
+                          <Link to={subValue.path}>
+                            <div
+                              className="sublist-container"
+                              id={isActive && "active"}
+                            >
+                              <div></div>
+                              <div id="title">{subValue.title}</div>
+                            </div>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               )}
             </li>
           );
