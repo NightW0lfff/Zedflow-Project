@@ -24,6 +24,7 @@ container {
   display: block;
   padding: 20px 10px;
   margin: auto;
+  user-select: none;
 }
 
 .sidebar .list {
@@ -101,6 +102,10 @@ container {
   flex: 3;
   display: grid;
   place-items: center;
+}
+
+#title {
+  user-select: none;
 }
 
 .list-container #title {

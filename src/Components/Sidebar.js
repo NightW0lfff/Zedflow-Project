@@ -8,6 +8,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 function Sidebar(props) {
   // Get the current path
   const path = useLocation();
+  // Put the array inside to be able to keep all the select list open
   const [sublistVisible, setSublistVisible] = useState(null);
   const [arrowRotation, setArrowRotation] = useState(false);
 
@@ -46,7 +47,6 @@ function Sidebar(props) {
                   <span id="title">{value.title}</span>
                 </Link>
               ) : (
-                // <div className="row list-container" id={isActive && "active"}>
                 <div
                   className="list-container"
                   onClick={() => toggleSublist(key)}
@@ -65,9 +65,9 @@ function Sidebar(props) {
                     />
                   )}
                 </div>
-                // </div>
               )}
 
+              {/* Sidebar Sublist */}
               {value.hasSubList && (
                 <div
                   className="sidebar-sublist"
