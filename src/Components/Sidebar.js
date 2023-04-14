@@ -69,36 +69,30 @@ function Sidebar(props) {
 
               {/* Sidebar Sublist */}
               {value.hasSubList && (
-                <div
-                  className="sidebar-sublist"
-                  // id={sublistVisible === key ? "active" : ""}
+                <ul
+                  className={`sublist ${
+                    sublistVisible === key ? "" : "hidden"
+                  }`}
                 >
-                  {/* If the sublist is hidden, add the class "hidden" to the list item */}
-                  <ul
-                    className={`sublist ${
-                      sublistVisible === key ? "" : "hidden"
-                    }`}
-                  >
-                    {/* Create a sublist for each list item that has Sublist */}
-                    {value.subList.map((subValue, subKey) => {
-                      // Check if the current path is the same as the path in the sidebar data
-                      const isActive = path.pathname.includes(subValue.path);
-                      return (
-                        <li key={subKey} className="sublist">
-                          <Link to={subValue.path}>
-                            <div
-                              className="sublist-container"
-                              id={isActive && "active"}
-                            >
-                              <div></div>
-                              <div id="title">{subValue.title}</div>
-                            </div>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
+                  {/* Create a sublist for each list item that has Sublist */}
+                  {value.subList.map((subValue, subKey) => {
+                    // Check if the current path is the same as the path in the sidebar data
+                    const isActive = path.pathname.includes(subValue.path);
+                    return (
+                      <li key={subKey} className="sublist">
+                        <Link to={subValue.path}>
+                          <div
+                            className="sublist-container"
+                            id={isActive && "active"}
+                          >
+                            <div></div>
+                            <div id="title">{subValue.title}</div>
+                          </div>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               )}
             </li>
           );

@@ -33,21 +33,6 @@ container {
   padding: 0;
   width: 100%;
 }
-/* .sidebar-sublist#active {
-  display: block;
-  transform: translateY(0%);
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  opacity: 1;
-  transition: transform 1s;
-}
-.sidebar-sublist {
-  transform: translateY(-30%);
-  transition: transform 1s;
-  opacity: 1;
-  display: none;
-} */
 
 .list-container,
 .sublist-container {
@@ -63,15 +48,19 @@ container {
 
 /* To hide a sublist */
 .sublist.hidden {
-  display: none;
-  height: 0;
+  width: 100%;
+  max-height: 0;
   padding: 0;
-  margin: 0;
+  transition: max-height 1s ease-in-out;
+  overflow: hidden;
 }
 
 .sublist {
   list-style-type: none;
   padding: 0;
+  max-height: 250px;
+  transition: max-height 1s ease-in-out;
+  overflow: hidden;
 }
 
 .list-container:hover,
