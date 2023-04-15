@@ -1,6 +1,6 @@
 import "./style.css";
-// import TabList from "./Components/NavigationTab/TabList";
 import Sidebar from "./Components/Sidebar";
+import Main from "./Components/Main";
 // import Test from "./Test.js";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <container>
         <Sidebar />
-        {/* <Test /> */}
+        <Main />
       </container>
     </div>
   );

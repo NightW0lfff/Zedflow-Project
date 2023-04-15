@@ -1,4 +1,4 @@
-import "../style.css";
+import "./Sidebar.css";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
@@ -10,6 +10,7 @@ function Sidebar(props) {
   const path = useLocation();
 
   const [arrowRotation, setArrowRotation] = useState(false);
+
   const [openList, setOpenList] = useState(() => {
     return SidebarData.filter((value) => value.hasSubList).map((value, key) => {
       return { id: value.id, open: false };
@@ -38,13 +39,17 @@ function Sidebar(props) {
     // Sidebar Container
     <div className="sidebar">
       {/* Sidebar Header */}
-      <div className="header">
-        <a href="/Home" className="logo">
-          <img src="/zedflow-logo.png" alt="Zedflow Logo" className="logo" />
+      <div className="sidebar-header">
+        <a href="/home" className="sidebar-logo">
+          <img
+            src="/zedflow-logo.png"
+            alt="Zedflow Logo"
+            className="sidebar-logo"
+          />
         </a>
       </div>
       {/* Sidebar List */}
-      <ul className="list">
+      <ul className="sidebar-list">
         {SidebarData.map((value, key) => {
           // Check if the current path is the same as the path in the sidebar data
           const isActive = path.pathname.includes(value.path);
@@ -58,7 +63,7 @@ function Sidebar(props) {
                 // If the sidebar item has no sublist, add the class "no-arrow" to the list item
                 <Link
                   to={value.path}
-                  className="list-container"
+                  className="sidebar-list-container"
                   id={isActive && "active"}
                 >
                   <i id="icon">{value.icon}</i>
@@ -66,7 +71,7 @@ function Sidebar(props) {
                 </Link>
               ) : (
                 <div
-                  className="list-container"
+                  className="sidebar-list-container"
                   onClick={() => toggleOpen(key)}
                   id={isActive && "active"}
                 >
@@ -86,16 +91,18 @@ function Sidebar(props) {
 
               {/* Sidebar Sublist */}
               {value.hasSubList && (
-                <ul className={`sublist ${isOpen(key) ? "" : "hidden"}`}>
+                <ul
+                  className={`sidebar-sublist ${isOpen(key) ? "" : "hidden"}`}
+                >
                   {/* Create a sublist for each list item that has Sublist */}
                   {value.subList.map((subValue, subKey) => {
                     // Check if the current path is the same as the path in the sidebar data
                     const isActive = path.pathname.includes(subValue.path);
                     return (
-                      <li key={subKey} className="sublist">
+                      <li key={subKey} className="sidebar-sublist">
                         <Link to={subValue.path}>
                           <div
-                            className="sublist-container"
+                            className="sidebar-sublist-container"
                             id={isActive && "active"}
                           >
                             <div></div>

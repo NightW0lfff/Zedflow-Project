@@ -1,0 +1,125 @@
+.sidebar {
+  position: relative;
+  width: 250px;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #323f52;
+  color: #f4f3f4;
+}
+
+.sidebar-logo {
+  display: block;
+  padding: 20px 10px;
+  margin: auto;
+  user-select: none;
+}
+
+.sidebar-list {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar-list-container,
+.sublist-container {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* To hide a sublist */
+.sidebar-sublist.hidden {
+  width: 100%;
+  max-height: 0;
+  padding: 0;
+  transition: max-height 0.5s ease-out;
+
+  overflow: hidden;
+}
+
+.sidebar-sublist {
+  list-style-type: none;
+  padding: 0;
+  max-height: 350px;
+  transition: max-height 0.5s ease-out;
+  overflow: hidden;
+}
+
+.sidebar-list-container:hover,
+.sidebar-sublist-container:hover {
+  cursor: pointer;
+  background-color: #2c3745;
+}
+
+/* Change the color of list container when isActive */
+.sidebar-list-container#active,
+.no-arrow.sidebar-list-container#active,
+.sidebar-sublist-container#active {
+  background-color: #2c3745;
+}
+
+.sidebar-sidebar-list-container,
+.sidebar-sublist-container {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-list-container #icon,
+.no-arrow .sidebar-list-container #icon {
+  flex: 3;
+  display: grid;
+  place-items: center;
+}
+
+#title {
+  user-select: none;
+}
+
+.sidebar-list-container #title {
+  flex: 6;
+}
+
+.sidebar-sublist-container #title,
+.no-arrow .sidebar-list-container #title {
+  flex: 7;
+}
+
+.sidebar-sublist-container div {
+  flex: 3;
+}
+
+/* Add arrow animation */
+#arrow {
+  transition: transform 0.6s;
+}
+
+#arrow.rotate {
+  transform: rotate(90deg);
+}
+
+.sidebar-list-container #arrow {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: #f4f3f4;
+}
+
+@media only screen and (max-width: 1200px) {
+  .sidebar {
+    width: 60px;
+  }
+}
