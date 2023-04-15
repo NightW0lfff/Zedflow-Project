@@ -8,30 +8,30 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 function Sidebar(props) {
   // Get the current path
   const path = useLocation();
-  // Put the array inside to be able to keep all the select list open
-  const [sublistVisible, setSublistVisible] = useState({
-    id: null,
-    open: false,
-  });
+
   const [arrowRotation, setArrowRotation] = useState(false);
+  const [openList, setOpenList] = useState(() => {
+    return SidebarData.filter((value) => value.hasSubList).map((value, key) => {
+      return { id: value.id, open: false };
+    });
+  });
 
-  function setId(id) {
-    setSublistVisible(
-      sublistVisible.id !== id && { ...sublistVisible, id: id }
-    );
+  function isOpen(index) {
+    // Use the find function to get the object with the specified id
+    const item = openList.find((item) => item.id === index);
+    if (item) {
+      return item.open;
+    }
+    return false;
   }
 
-  function toggleSublist(id) {
-    setId(id);
-    setSublistVisible(
-      sublistVisible.id === id
-        ? { ...sublistVisible, open: !sublistVisible.open }
-        : { ...sublistVisible, open: false }
+  function toggleOpen(index) {
+    // Use the map function to create a new array with the updated state
+    setOpenList((prevState) =>
+      prevState.map((item) =>
+        item.id === index ? { ...item, open: !item.open } : item
+      )
     );
-  }
-
-  function isOpen(id) {
-    return sublistVisible.id === id && sublistVisible.open;
   }
 
   return (
@@ -67,7 +67,7 @@ function Sidebar(props) {
               ) : (
                 <div
                   className="list-container"
-                  onClick={() => toggleSublist(key)}
+                  onClick={() => toggleOpen(key)}
                   id={isActive && "active"}
                 >
                   <i id="icon">{value.icon}</i>
@@ -76,7 +76,6 @@ function Sidebar(props) {
                     <KeyboardArrowRightIcon
                       id="arrow"
                       onClick={() => {
-                        toggleSublist(key);
                         setArrowRotation(!arrowRotation);
                       }}
                       className={isOpen(key) ? "rotate" : ""}
@@ -87,7 +86,7 @@ function Sidebar(props) {
 
               {/* Sidebar Sublist */}
               {value.hasSubList && (
-                <ul className={`sublist ${isOpen(key) ? "hidden" : ""}`}>
+                <ul className={`sublist ${isOpen(key) ? "" : "hidden"}`}>
                   {/* Create a sublist for each list item that has Sublist */}
                   {value.subList.map((subValue, subKey) => {
                     // Check if the current path is the same as the path in the sidebar data

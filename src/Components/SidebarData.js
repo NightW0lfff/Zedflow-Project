@@ -11,6 +11,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 const SidebarData = [
   {
+    id: 0,
     title: "Products",
     icon: <StorefrontIcon />,
     path: "/products",
@@ -35,6 +36,7 @@ const SidebarData = [
     ],
   },
   {
+    id: 1,
     title: "Stock",
     icon: <InventoryIcon />,
     path: "/stock",
@@ -51,6 +53,7 @@ const SidebarData = [
     ],
   },
   {
+    id: 2,
     title: "Sales",
     icon: <ShoppingCartIcon />,
     path: "/Sales",
@@ -67,6 +70,7 @@ const SidebarData = [
     ],
   },
   {
+    id: 3,
     title: "Variants",
     icon: <LibraryBooksIcon />,
     path: "/variants",
@@ -132,6 +136,7 @@ const SidebarData = [
     ],
   },
   {
+    id: 4,
     title: "TradeMarks",
     icon: <BookIcon />,
     path: "/trademarks",
@@ -155,33 +160,38 @@ const SidebarData = [
     ],
   },
   {
+    id: 5,
     title: "Keywords",
     icon: <InboxIcon />,
     path: "/keywords",
     hasSubList: false,
   },
   {
+    id: 6,
     title: "Artist",
     icon: <SchoolIcon />,
     path: "/artist",
     hasSubList: false,
   },
   {
+    id: 7,
     title: "Category",
     icon: <CategoryIcon />,
-    path: "/Category",
+    path: "/category",
     hasSubList: false,
   },
   {
+    id: 8,
     title: "Performance",
     icon: <CategoryIcon />,
-    path: "/Performance",
+    path: "/performance",
     hasSubList: false,
   },
   {
+    id: 9,
     title: "Setting",
     icon: <SettingsIcon />,
-    path: "/Setting",
+    path: "/setting",
     hasSubList: true,
     subList: [
       {
