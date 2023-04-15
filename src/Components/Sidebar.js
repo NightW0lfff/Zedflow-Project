@@ -9,11 +9,29 @@ function Sidebar(props) {
   // Get the current path
   const path = useLocation();
   // Put the array inside to be able to keep all the select list open
-  const [sublistVisible, setSublistVisible] = useState(null);
+  const [sublistVisible, setSublistVisible] = useState({
+    id: null,
+    open: false,
+  });
   const [arrowRotation, setArrowRotation] = useState(false);
 
-  function toggleSublist(index) {
-    setSublistVisible(sublistVisible === index ? "" : index);
+  function setId(id) {
+    setSublistVisible(
+      sublistVisible.id !== id && { ...sublistVisible, id: id }
+    );
+  }
+
+  function toggleSublist(id) {
+    setId(id);
+    setSublistVisible(
+      sublistVisible.id === id
+        ? { ...sublistVisible, open: !sublistVisible.open }
+        : { ...sublistVisible, open: false }
+    );
+  }
+
+  function isOpen(id) {
+    return sublistVisible.id === id && sublistVisible.open;
   }
 
   return (
@@ -61,7 +79,7 @@ function Sidebar(props) {
                         toggleSublist(key);
                         setArrowRotation(!arrowRotation);
                       }}
-                      className={sublistVisible === key ? "rotate" : ""}
+                      className={isOpen(key) ? "rotate" : ""}
                     />
                   )}
                 </div>
@@ -69,11 +87,7 @@ function Sidebar(props) {
 
               {/* Sidebar Sublist */}
               {value.hasSubList && (
-                <ul
-                  className={`sublist ${
-                    sublistVisible === key ? "" : "hidden"
-                  }`}
-                >
+                <ul className={`sublist ${isOpen(key) ? "hidden" : ""}`}>
                   {/* Create a sublist for each list item that has Sublist */}
                   {value.subList.map((subValue, subKey) => {
                     // Check if the current path is the same as the path in the sidebar data

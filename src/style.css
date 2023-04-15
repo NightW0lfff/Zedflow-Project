@@ -8,12 +8,12 @@ container {
   display: block;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
 .sidebar {
-  position: fixed;
+  position: relative;
   width: 250px;
   height: 100%;
   background-color: #323f52;
@@ -51,15 +51,15 @@ container {
   width: 100%;
   max-height: 0;
   padding: 0;
-  transition: max-height 1s ease-in-out;
+  transition: max-height 0.85s ease-in-out;
   overflow: hidden;
 }
 
 .sublist {
   list-style-type: none;
   padding: 0;
-  max-height: 250px;
-  transition: max-height 1s ease-in-out;
+  max-height: 500px;
+  transition: max-height 0.85s ease-in-out;
   overflow: hidden;
 }
 
@@ -112,7 +112,7 @@ container {
 
 /* Add arrow animation */
 #arrow {
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.7s;
 }
 
 #arrow.rotate {
