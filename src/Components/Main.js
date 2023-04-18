@@ -10,11 +10,13 @@ function Main() {
         </div>
       </nav>
       <div className="nav-top-header">
-        <h2>Title</h2>
+        <h2>This is a page Title</h2>
       </div>
 
       <div className="main-container">
-        <div className="main-box"></div>
+        <div className="main-box">
+          <h1> This is a main content area</h1>
+        </div>
       </div>
       <footer>
         <div className="footer-container">
