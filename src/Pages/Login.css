@@ -1,0 +1,65 @@
+/* .auth-form-container {
+  height: 300px;
+  padding-top: 10px;
+  background-color: rgb(241, 228, 250);
+  box-shadow: inset 0px 0px 25px 0px;
+} */
+/* 
+.Login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0 90px 0;
+  align-items: center;
+  border: none;
+} */
+
+/* ul {
+  list-style-type: none;
+} */
+/* 
+.emailIcon {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  padding: 14px 0 0 25px;
+} */
+
+/* .email {
+  padding-left: 70px;
+  font-size: 20px;
+} */
+/* 
+@media screen and (min-width: 600px) {
+  .auth-form-container {
+    padding: 3rem;
+    width: 300px;
+    border: 2px solid white;
+    box-shadow: inset 0px 0px 25px 0px #888;
+    border-radius: 40px;
+    margin: 0.5rem;
+    color: rgba(52, 52, 233, 0.705);
+  }
+} */
+
+/* label {
+  text-align: left;
+  padding: 0.25rem 0;
+} */
+
+/* input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 20px;
+  box-shadow: inset 0px 0px 25px 0px #888;
+} */
+
+/* button {
+  border: none;
+  padding-top: 20px;
+  color: white;
+  background-color: rgba(52, 52, 233, 0.705);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+} */
