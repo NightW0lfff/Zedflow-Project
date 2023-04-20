@@ -17,10 +17,7 @@ function Main(props) {
         </div>
 
         <div className="main-container">
-          <div className="main-box">
-            <h1>This is a content</h1>
-            {props.children}
-          </div>
+          <div className="main-box">{props.children}</div>
         </div>
         <footer>
           <div className="footer-container">
