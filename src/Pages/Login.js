@@ -34,7 +34,7 @@ function Login() {
               value={pass}
               onChange={(e) => setPass(e.target.value)}
               type="password"
-              placeholder="********"
+              placeholder="Password"
               id="password"
               name="password"
             />
