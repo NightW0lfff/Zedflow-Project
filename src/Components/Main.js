@@ -12,9 +12,9 @@ function Main(props) {
             <span className="nav-top-account-title">Profile</span>
           </div>
         </nav>
-        <div className="nav-top-header">
+         <div className="nav-top-header">
           <h2>This is a title</h2>
-        </div>
+         </div> 
 
         <div className="main-container">
           <div className="main-box">{props.children}</div>

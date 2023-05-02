@@ -1,0 +1,42 @@
+.Card-body {
+    flex: 1 1 auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    padding: 1.5rem;
+}
+
+.Card-header {
+    max-width: 100%;
+}
+.columne {
+    position: relative;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.E-button {
+    background-color: #5e72e4;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-color: #5e72e4;
+    border-radius: 10;
+    margin-right: 10px;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+}    
+
+.Regen-button {
+    background-color: #5e72e4;
+    color: #fff;
+    font-size: 15px;
+    border-color: #5e72e4;
+    border-radius: 10px;
+    font-weight: 600;
+    width: 150px;
+    height: 50px;
+    opacity: 0.65;
+}
