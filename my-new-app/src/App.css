@@ -1,4 +1,4 @@
-.App1 {
+.App {
   text-align: center;
   padding-top: 10px;
   justify-content: center;
@@ -13,6 +13,9 @@
   background-image: url(./Background-image.png);
   background-repeat: no-repeat;
   Background-size: cover;
+  position: relative;
+
+
 }
 
 
@@ -21,7 +24,7 @@
 
 .auth-form-container {
   height: 300px;
-  width: 300px;
+  width: 600px;
   padding-top: 10px;
   background-color: rgb(241, 228, 250);
   box-shadow: inset 0px 0px 25px 0px;
@@ -54,12 +57,12 @@ ul {
 
 @media screen and (min-width: 600px) {
   .auth-form-container {
-    top: 1px;
     padding: 3rem;
-    width: 270px;
+    width: 300px;
+    position: absolute;
     border: 2px solid white;
     box-shadow: inset 0px 0px 25px 0px #888;
-    border-radius: 0px;
+    border-radius: 40px;
     margin: 0.5rem;
     color: rgba(52, 52, 233, 0.705);
 
@@ -77,8 +80,7 @@ input {
   margin: 0.5rem 0;
   padding: 1rem;
   border: none;
-  align-items: left;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: inset 0px 0px 25px 0px #888;
 
 
@@ -93,9 +95,4 @@ button {
   border-radius: 10px;
   cursor: pointer;
 
-}
-
-.Signing {
-  color: black;
-  padding-top: 1px;
 }

@@ -1,11 +1,11 @@
 import { useRef, UseState, useEffect } from React;
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from './api/axios';
+import axios from './src/api/axios';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
 const PASS_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
+const REGISTER_URL = '/register';
 
 const Register = () => {
     const userRef = useRef();
@@ -54,7 +54,7 @@ const Register = () => {
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({ email, pass }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -73,7 +73,7 @@ const Register = () => {
             if (!err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 409) {
-                setErrMsg('Email Taken');
+                setErrMsg('Invalid Email');
             } else {
                 setErrMsg('Registration Failed')
             }
@@ -114,9 +114,9 @@ const Register = () => {
                             <FontAwesomeIcon icon={faTimes} className={validPass || !pass ? "hide" : "invalid"} />
                         </label>
                         <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" ref={userRef} name="password" aria-invalid={validPwd ? "false" : "true"}
-                            aria-describedby="pwdnote"
-                            onFocus={() => setPwdFocus(true)}
-                            onBlur={() => setPwdFocus(false)} />
+                            aria-describedby="passnote"
+                            onFocus={() => setPassFocus(true)}
+                            onBlur={() => setPassFocus(false)} />
                         <p id="passnote" className={passFocus && !validPass ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             8 to 24 characters.<br />

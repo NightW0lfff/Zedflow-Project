@@ -1,10 +1,16 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
+import AuthContext from "./context/AuthProvider";
 import img1 from "./Background-image.png";
 import { MdEmail } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";
 import img2 from "./zedflow-logo.png";
 
+import axios from './api/axios';
+const LOGIN_URL = '/auth';
+
 export const Login = () => {
+
+    const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef('');
 
@@ -23,10 +29,37 @@ export const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email, pass);
-        setEmail('');
-        setPass('');
-        setSuccess(true);
+
+        try {
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({ email, pass }),
+                {
+                    headers: { 'Content-type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+
+            console.log(JSON.stringify(response?.data));
+            //console.log(JSON.stringify(response));
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
+            setAuth({ email, pass, roles, accessToken });
+            setEmail('');
+            setPass('');
+            setSuccess(true);
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Email or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            errRef.current.focus();
+        }
+
     }
 
 
@@ -90,4 +123,6 @@ export const Login = () => {
 
 
     )
+
 }
+export default Login
