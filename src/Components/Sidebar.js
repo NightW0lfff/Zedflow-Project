@@ -40,7 +40,7 @@ function Sidebar(props) {
     <div className="sidebar">
       {/* Sidebar Header */}
       <div className="sidebar-header">
-        <a href="/home" className="sidebar-logo">
+        <a href="/" className="sidebar-logo">
           <img
             src="/zedflow-logo.png"
             alt="Zedflow Logo"

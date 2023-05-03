@@ -1,7 +1,7 @@
 .sidebar {
   position: relative;
   width: 250px;
-  height: 100%;
+
   min-height: 100vh;
   background-color: #323f52;
   color: #f4f3f4;
@@ -19,6 +19,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
+  list-style-type: none;
 }
 
 .sidebar-list-container,
