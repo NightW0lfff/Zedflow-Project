@@ -10,7 +10,7 @@ import axios from './api/axios';
 const LOGIN_URL = '/auth';
 
 export const Login = () => {
-  const { setAuth } = useContext(AuthContext);
+  //const { setAuth } = useContext(AuthContext);
   const userRef = useRef();
   const errRef = useRef('');
 
@@ -41,9 +41,9 @@ export const Login = () => {
 
       console.log(JSON.stringify(response?.data));
       //console.log(JSON.stringify(response));
-      const accessToken = response?.data?.accessToken;
+      /*const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
-      setAuth({ email, pass, roles, accessToken });
+      setAuth({ email, pass, roles, accessToken });*/
       setEmail('');
       setPass('');
       setSuccess(true);
@@ -113,7 +113,7 @@ export const Login = () => {
             Need an Account? <br />
             <span classname="Signing">
               {/*put router link here*/}
-              <a href="#"> Sign Up</a>
+              <a href="./Register"> Sign Up</a>
             </span >
           </p >
 
