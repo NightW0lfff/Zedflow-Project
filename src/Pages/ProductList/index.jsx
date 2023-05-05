@@ -3,6 +3,7 @@ import Sidebar from "../../Components/Sidebar";
 import { Breadcrumbs, Link, Typography} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import './style.css';
+import SearchIcon from '@mui/icons-material/Search';
 
 const ProductList  = (props) => {
     
@@ -13,7 +14,7 @@ const ProductList  = (props) => {
       };
 
     return(
-        <container>
+    <container>
       <Sidebar />
       <div className="content-container">
         <nav className="nav-top">
@@ -47,10 +48,10 @@ const ProductList  = (props) => {
         <div className="main-container">
 
           <div className="main-box">{props.children}
-            <div class="Card" >
-                <div class="Card-body">
-                    <div class="card-header">
-                        <div class="columne">
+            <div className="Card" >
+                <div className="Card-body">
+                    <div className="Card-header">
+                        <div className="columne">
                         <form onSubmit={handleSubmit}>
                             <button type="submit" className="E-button">
                             Export CSV
@@ -59,6 +60,12 @@ const ProductList  = (props) => {
                             Regenerate Files
                             </button>
                         </form>
+                        </div>
+                        <div className="columne1">
+                          <div className="search-box">
+                            <input type="text" placeholder="Search..." />
+                            <button><SearchIcon fontSize="small"/></button>
+                          </div>
                         </div>
                     </div>
                 </div>
