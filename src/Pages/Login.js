@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import "./Login.css"
+import "./Login.css";
 import AuthContext from "./context/AuthProvider";
 
 import { MdEmail } from "react-icons/md";
@@ -67,6 +67,8 @@ export const Login = () => {
   function Image() {
     return (
       <div classname="bg">
+        <img
+          src="/zedflow-logo.png"> </img>
 
 
       </div>
@@ -95,7 +97,7 @@ export const Login = () => {
 
           <p ref={errRef} className={errMsg ? "errmsg" :
             "offscreen"} aria-live="assertive" >{errMsg}</p>
-          <h2>Welcome to Zedflow </h2>
+          <h2 style={{ color: "#000000" }}>Welcome to Zedflow </h2>
           <form className="Login-form" onSubmit={handleSubmit}>
             <ul>
               <MdEmail classname="emailIcon" />
@@ -106,10 +108,10 @@ export const Login = () => {
               <label for="password"> </label>
               <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" ref={userRef} name="password" /> </ul>
             <button type="submit">
-              <a href="/" style={{ color: "#000000" }}> Sign In </a> </button>
+              <a href="/" style={{ color: "#FFFFFF" }}> Sign In </a> </button>
           </form>
 
-          <p>
+          <p style={{ color: "#FFFFFF" }}>
             Need an Account? <br />
             <span classname="Signing">
               {/*put router link here*/}

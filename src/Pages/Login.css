@@ -1,65 +1,97 @@
-/* .auth-form-container {
+.auth-form-container {
   height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: center;
+  justify-content: center;
   padding-top: 10px;
-  background-color: rgb(241, 228, 250);
+  background-color: #ecf1f8;
   box-shadow: inset 0px 0px 25px 0px;
-} */
-/* 
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+body {
+  background-color: #323F52;
+}
+
+
+
 .Login-form {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  color: Black;
   padding: 2px 0 90px 0;
   align-items: center;
   border: none;
-} */
+}
 
-/* ul {
+ul {
   list-style-type: none;
-} */
-/* 
+}
+
+
 .emailIcon {
-  height: 100px;
-  width: 100px;
+
   position: absolute;
   padding: 14px 0 0 25px;
-} */
+}
 
-/* .email {
+.email {
   padding-left: 70px;
   font-size: 20px;
-} */
-/* 
+}
+
 @media screen and (min-width: 600px) {
   .auth-form-container {
     padding: 3rem;
-    width: 300px;
-    border: 2px solid white;
-    box-shadow: inset 0px 0px 25px 0px #888;
-    border-radius: 40px;
-    margin: 0.5rem;
-    color: rgba(52, 52, 233, 0.705);
+    text-align: center;
+    border: 3px solid #f1f1f1;
+    width: 20%;
+    border-radius: 10px;
+    margin: 50px auto;
+    color: rgba(36, 36, 206, 0.705);
   }
-} */
+}
 
-/* label {
+label {
   text-align: left;
   padding: 0.25rem 0;
-} */
+}
 
-/* input {
-  margin: 0.5rem 0;
-  padding: 1rem;
+input {
+  margin: 8px 0;
+  padding: 14px 20px;
   border: none;
-  border-radius: 20px;
+  width: 80%;
+  box-sizing: border-box;
   box-shadow: inset 0px 0px 25px 0px #888;
-} */
+}
 
-/* button {
+/*input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}*/
+
+button {
+  background-color: #0047AB;
+
+  padding: 14px 20px;
+  margin: 8px 0;
   border: none;
-  padding-top: 20px;
-  color: white;
-  background-color: rgba(52, 52, 233, 0.705);
-  padding: 10px;
-  border-radius: 10px;
   cursor: pointer;
-} */
+  width: 50%;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
