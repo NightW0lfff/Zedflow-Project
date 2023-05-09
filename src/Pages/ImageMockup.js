@@ -32,21 +32,32 @@ function ImageMockup() {
                   <button>Remove Image</button>
                 </div>
               </div>
-              <div className="product-image-box mockup" src="" alt="" />
-              <div className="product-image-box mockup" src="" alt="" />
+              <div className="product-image-box " src="" alt="" />
+              <div className="product-image-box " src="" alt="" />
             </div>
             <span className="input-container">
               <input type="checkbox" />
               Upload
             </span>
           </div>
-          <div className="product-image-container"></div>
           <div className="product-image stickers">
             <h3>Stickers</h3>
+            <div className="shirt-card-container">
+              <div className="shirt-logo-container">
+                <div className="image-box" src="" alt="" />
+                <div className="image-btn">
+                  <button>Upload Image</button>
+                  <button>Remove Image</button>
+                </div>
+              </div>
+              <div className="product-image-box " src="" alt="" />
+            </div>
+            <span className="input-container">
+              <input type="checkbox" />
+              Upload
+            </span>
           </div>
-        </div>
-        <div className="product-image mugs">
-          <div className="product-image shirts">
+          <div className="product-image mugs">
             <h3>Mugs</h3>
             <div className="shirt-card-container">
               <div className="shirt-logo-container">
@@ -63,8 +74,8 @@ function ImageMockup() {
                   <button>Remove Image</button>
                 </div>
               </div>
-              <div className="product-image-box mockup" src="" alt="" />
-              <div className="product-image-box mockup" src="" alt="" />
+              <div className="product-image-box " src="" alt="" />
+              <div className="product-image-box " src="" alt="" />
             </div>
             <span className="input-container">
               <input type="checkbox" />
