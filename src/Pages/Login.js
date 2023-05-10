@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import "./Login.css";
 import AuthContext from "./context/AuthProvider";
+import { Link } from "react-router-dom";
 
 import { MdEmail } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";
@@ -114,9 +115,13 @@ export const Login = () => {
           <p style={{ color: "#FFFFFF" }}>
             Need an Account? <br />
             <span classname="Signing">
+              <Link to={"./Register"} >Sign Up </Link>
+
               {/*put router link here*/}
-              <a href="./Register"> Sign Up</a>
+              {/*<a href="./Register"> Sign Up</a>*/}
             </span >
+
+
           </p >
 
         </div >
