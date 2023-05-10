@@ -1,6 +1,10 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import "./Login.css";
+<<<<<<< Updated upstream
 import AuthContext from "./context/AuthProvider";
+=======
+
+>>>>>>> Stashed changes
 
 import { MdEmail } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";

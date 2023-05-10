@@ -4,6 +4,7 @@ import { Breadcrumbs, Link, Typography} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import './style.css';
 import SearchIcon from '@mui/icons-material/Search';
+import DataGridDemo from "./ProductListBox";
 
 const ProductList  = (props) => {
     
@@ -67,6 +68,9 @@ const ProductList  = (props) => {
                             <button><SearchIcon fontSize="small"/></button>
                           </div>
                         </div>
+                    </div>
+                    <div >
+                      <DataGridDemo/>
                     </div>
                 </div>
             </div>
