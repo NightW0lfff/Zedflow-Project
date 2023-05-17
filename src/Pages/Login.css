@@ -1,34 +1,63 @@
 .auth-form-container {
-  height: 300px;
-  display: block;
+  width: 100%;
+  max-width: 420px;
+  min-height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: center;
+  padding-top: 10px;
+  background-color: rgba(238, 241, 241, 0.4);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.rcontainer {
+  width: 100%;
+  max-width: 420px;
+  min-height: 400px;
   margin-left: auto;
   margin-right: auto;
   position: center;
-  justify-content: center;
-  padding-top: 10px;
-  background-color: #ecf1f8;
-  box-shadow: inset 0px 0px 25px 0px;
-  font-family: Arial, Helvetica, sans-serif;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: rgba(238, 241, 241, 0.4);
 }
 
 
-
 body {
-  background-color: #323F52;
+  background-color: whitesmoke;
 }
 
 
 
 .Login-form {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   color: Black;
   padding: 2px 0 90px 0;
   align-items: center;
-  border: none;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
 }
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+
 
 ul {
   list-style-type: none;
@@ -36,7 +65,6 @@ ul {
 
 
 .emailIcon {
-
   position: absolute;
   padding: 14px 0 0 25px;
 }
@@ -54,7 +82,7 @@ ul {
     width: 20%;
     border-radius: 10px;
     margin: 50px auto;
-    color: rgba(36, 36, 206, 0.705);
+    color: rgba(238, 241, 241, 0.4);
   }
 }
 
@@ -63,35 +91,82 @@ label {
   padding: 0.25rem 0;
 }
 
-input {
+/*input {
   margin: 8px 0;
   padding: 14px 20px;
   border: none;
   width: 80%;
   box-sizing: border-box;
-  box-shadow: inset 0px 0px 25px 0px #888;
-}
 
-/*input {
+}*/
+
+input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-}*/
+}
 
 button {
-  background-color: #0047AB;
-
-  padding: 14px 20px;
+  background-color: #363592;
+  color: white;
+  padding: 16px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 50%;
-  color: white;
+  width: 100%;
+  opacity: 0.9;
 }
 
 button:hover {
   opacity: 0.8;
+}
+
+.registerbtn {
+  background-color: #363592;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
 }
