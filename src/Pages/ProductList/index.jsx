@@ -5,14 +5,32 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import './style.css';
 import SearchIcon from '@mui/icons-material/Search';
 import DataGridDemo from "./ProductListBox";
+import { useState } from "react";
+import rows from "./ProductListBox/index.jsx"
 
 const ProductList  = (props) => {
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const url = "http://zed.umbrellaink.com.au/export?data=[]";
         window.location.href = url;
       };
+
+    const [records, setRecords] = useState([rows]);
+ 
+    const handleSearch = (event) => {
+      const value = event.target.value
+      if (value) {
+        const newList = records.filter(rows => {
+          return rows.title.includes(value.toLowerCase())
+        })
+        setRecords(newList)
+      } else {
+        setRecords(records)
+      }
+  }
+
+
 
     return(
     <container>
@@ -64,13 +82,13 @@ const ProductList  = (props) => {
                         </div>
                         <div className="columne1">
                           <div className="search-box">
-                            <input type="text" placeholder="Search..." />
-                            <button><SearchIcon fontSize="small"/></button>
+                            <input className ="input1" type="text" placeholder="Search..." onChange={handleSearch}/>
+                            <button className="button1"><SearchIcon fontSize="small"/></button>
                           </div>
                         </div>
                     </div>
                     <div >
-                      <DataGridDemo/>
+                      <DataGridDemo />
                     </div>
                 </div>
             </div>

@@ -1,17 +1,12 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import "./Login.css";
-<<<<<<< Updated upstream
-import AuthContext from "./context/AuthProvider";
-=======
-
->>>>>>> Stashed changes
-
-import { MdEmail } from "react-icons/md";
-import { AiFillLock } from "react-icons/ai";
-
-
 import axios from './api/axios';
-const LOGIN_URL = '/auth';
+import AuthContext from "./context/AuthProvider";
+
+{/*import { MdEmail } from "react-icons/md";
+import { AiFillLock } from "react-icons/ai";*/}
+
+const LOGIN_URL = '/auth'; 
 
 export const Login = () => {
   //const { setAuth } = useContext(AuthContext);
@@ -103,12 +98,12 @@ export const Login = () => {
             "offscreen"} aria-live="assertive" >{errMsg}</p>
           <h2 style={{ color: "#000000" }}>Welcome to Zedflow </h2>
           <form className="Login-form" onSubmit={handleSubmit}>
-            <ul>
-              <MdEmail classname="emailIcon" />
+            <ul >
+              {/*<MdEmail classname="emailIcon" />*/}
               <label for="email"> </label>
-              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" id="email" ref={userRef} name="email" /> </ul>
+              <input  value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" id="email" ref={userRef} name="email" /> </ul>
             <ul>
-              <AiFillLock classname="passIcon" />
+              {/*<AiFillLock classname="passIcon" />*/}
               <label for="password"> </label>
               <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" ref={userRef} name="password" /> </ul>
             <button type="submit">

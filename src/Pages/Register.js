@@ -1,4 +1,4 @@
-import { useRef, UseState, useEffect } from React;
+import { useRef, useState, useEffect } from 'react';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from './api/axios';
@@ -98,8 +98,8 @@ const Register = () => {
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="email">
                             Email:
-                            <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validEmail || !user ? "hide" : "invalid"} />
+                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} /> 
+                             <FontAwesomeIcon icon={faTimes} className={validEmail || !user ? "hide" : "invalid"} /> 
                         </label>
                         <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" id="email" ref={userRef} required
                             aria-invalid={validName ? "false" : "true"}
