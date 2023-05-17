@@ -2,9 +2,9 @@ import React, { useRef, useState, useEffect, useContext } from "react";
 import "./Login.css";
 import AuthContext from "./context/AuthProvider";
 import { Link } from "react-router-dom";
-
-import { MdEmail } from "react-icons/md";
-import { AiFillLock } from "react-icons/ai";
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
+//import { AiFillLock } from "react-icons/ai";
 
 
 import axios from './api/axios';
@@ -98,27 +98,30 @@ export const Login = () => {
 
           <p ref={errRef} className={errMsg ? "errmsg" :
             "offscreen"} aria-live="assertive" >{errMsg}</p>
-          <h2 style={{ color: "#000000" }}>Welcome to Zedflow </h2>
+          <h2 style={{ color: "Black" }}>Welcome to Zedflow </h2>
           <form className="Login-form" onSubmit={handleSubmit}>
             <ul>
-              <MdEmail classname="emailIcon" />
+              <EmailIcon classname="emailIcon" />
               <label for="email"> </label>
               <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" id="email" ref={userRef} name="email" /> </ul>
             <ul>
-              <AiFillLock classname="passIcon" />
+              <LockIcon classname="passIcon" />
               <label for="password"> </label>
               <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" ref={userRef} name="password" /> </ul>
             <button type="submit">
               <a href="/" style={{ color: "#FFFFFF" }}> Sign In </a> </button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember" /> Remember me
+            </label>
           </form>
 
-          <p style={{ color: "#FFFFFF" }}>
+          <p style={{ color: "#000000" }} >
             Need an Account? <br />
             <span classname="Signing">
-              <Link to={"./Register"} >Sign Up </Link>
+              <Link style={{ color: "#1E90FF" }} to={"/register"}>Sign Up </Link>
 
               {/*put router link here*/}
-              {/*<a href="./Register"> Sign Up</a>*/}
+              {/* <a href="./Register"> Sign Up</a> */}
             </span >
 
 

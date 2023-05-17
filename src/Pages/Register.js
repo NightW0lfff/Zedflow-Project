@@ -1,14 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
-// import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRef, useState, useEffect } from 'react';
+import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from './api/axios';
-// import React from "react";
+import { Link } from "react-router-dom";
 
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
 const PASS_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/register';
 
-const Register = () => {
+function Register(props) {
     const userRef = useRef();
     const errRef = useRef();
 
@@ -55,7 +55,7 @@ const Register = () => {
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ email, pass }),
+                JSON.stringify({ Email, pass }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -86,24 +86,25 @@ const Register = () => {
     return (
         <>
             {success ? (
-                <div>
+                <div classname="rcontainer">
                     <h1> Success!</h1>
                     <p>
                         <a href="./Login">Sign In</a>
                     </p>
                 </div>
             ) : (
-                <div>
+                <div className="rcontainer">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Register</h1>
-                    <form onSubmit={handleSubmit}>
+                    <p> Please fill in this form to create an account.</p>
+                    <form className="register-form" onSubmit={handleSubmit}>
                         <label htmlFor="email">
                             Email:
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validEmail || !user ? "hide" : "invalid"} />
+                            <FontAwesomeIcon icon={faTimes} className={validEmail || !Email ? "hide" : "invalid"} />
                         </label>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" id="email" ref={userRef} required
-                            aria-invalid={validName ? "false" : "true"}
+                        <input value={Email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" id="email" ref={userRef} required
+                            aria-invalid={validEmail ? "false" : "true"}
                             aria-describedby="uidnote"
                             onFocus={() => setEmailFocus(true)}
                             onBlur={() => setEmailFocus(false)}
@@ -114,7 +115,7 @@ const Register = () => {
                             <FontAwesomeIcon icon={faCheck} className={validPass ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validPass || !pass ? "hide" : "invalid"} />
                         </label>
-                        <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" ref={userRef} name="password" aria-invalid={validPwd ? "false" : "true"}
+                        <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" ref={userRef} name="password" aria-invalid={validPass ? "false" : "true"}
                             aria-describedby="passnote"
                             onFocus={() => setPassFocus(true)}
                             onBlur={() => setPassFocus(false)} />
@@ -132,7 +133,8 @@ const Register = () => {
                         </label>
                         <input
                             type="password"
-                            id="confirm_pwd"
+                            placeholder="********"
+                            id="confirm_pass"
                             onChange={(e) => setMatchPass(e.target.value)}
                             value={matchPass}
                             required
@@ -145,19 +147,25 @@ const Register = () => {
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match the first password input field.
                         </p>
+                        <p>By creating an account you agree to our <a style={{ color: "#1E90FF" }} href="#">Terms & Privacy</a>.</p>
 
-
-                        <button disabled={!validName || !validPass || !validMatch ? true : false}>Sign Up</button>
+                        <button type="submit" className="registerbtn" disabled={!validEmail || !validPass || !validMatch ? true : false}>Sign Up</button>
                     </form>
-                    <p>
-                        Already registered?<br />
-                        <span>
-                            {/*put router link here*/}
-                            <a href="./Login">Sign In</a>
-                        </span>
-                    </p>
-                </div>
-            )}
+                    <div>
+                        <p> Already have an account?
+                            <span>
+                                {/*put router link here*/}
+                                { /*<a href="./Login">Sign In</a> <Link to={"/register"} >Sign Up </Link>
+*/}
+                                <Link style={{ color: "#1E90FF" }} to={"/Login"}> Sign In </Link>
+
+                            </span>
+                        </p>
+                    </div>
+
+                </div >
+            )
+            }
         </>
 
 
