@@ -2,16 +2,33 @@ import Main from "../Components/Main";
 import "./ImageMockup.css";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage } from "@cloudinary/react";
-import { fill, fit, scale, flip } from "@cloudinary/url-gen/actions/resize";
+import { fill, fit, scale } from "@cloudinary/url-gen/actions/resize";
 import { source } from "@cloudinary/url-gen/actions/overlay";
 import { image } from "@cloudinary/url-gen/qualifiers/source";
 import { Transformation } from "@cloudinary/url-gen";
 import { Position } from "@cloudinary/url-gen/qualifiers/position";
-import { Flip } from "@cloudinary/url-gen";
-import { useState } from "react";
-import { effect } from "@cloudinary/url-gen/actions/effect";
+import { useEffect, useRef } from "react";
 
 function ImageMockup() {
+  const cloudinaryRef = useRef();
+  const widgetRef = useRef();
+  useEffect(() => {
+    cloudinaryRef.current = window.cloudinary;
+    widgetRef.current = cloudinaryRef.current.createUploadWidget(
+      {
+        cloudName: "umbrellaink",
+        uploadPreset: "v2wd9hdn",
+        multiple: false,
+      },
+      function (error, result) {
+        if (!error && result && result.event === "success") {
+          const publicId = result.info.public_id;
+          console.log("Public ID:", publicId);
+        }
+      }
+    );
+  }, []);
+
   const cld = new Cloudinary({
     cloud: {
       cloudName: "umbrellaink",
@@ -25,7 +42,9 @@ function ImageMockup() {
   const stickers = cld.image(
     "v1605154894/Stickers/Stickers-background-1000px.jpg"
   );
-  const frontMugs = cld.image("v1605156385/mugs/MUG-Set2-WH.jpg");
+  const frontMugs = cld.image(
+    "v1684850919/mugs/MUG-Set2-Flipped-WH_tgitp1.png"
+  );
   const backMugs = cld.image("v1605441506/mugs/Mug-Rear-WH.jpg");
   const lightLogo = cld.image(
     "v1682674768/artwork/14705-stickers-artwork_57b0cf3e-c748-4b50-9568-76be3eadeda6.png"
@@ -33,8 +52,6 @@ function ImageMockup() {
   const darkLogo = cld.image(
     "v1682674680/artwork/14705-artwork-dark_21cedb78-9ace-4112-bd44-57f88d4f9bc7.png"
   );
-
-  console.log(lightLogo);
 
   if (lightLogo.publicID !== "") {
     lightShirt
@@ -64,7 +81,7 @@ function ImageMockup() {
           image(lightLogo.publicID).transformation(
             new Transformation().resize(fit().width(300).height(300))
           )
-        ).position(new Position().offsetX(-80).offsetY(30))
+        ).position(new Position().offsetX(100).offsetY(30))
       );
 
     backMugs
@@ -117,7 +134,9 @@ function ImageMockup() {
                   alt=""
                 />
                 <div className="image-btn">
-                  <button>Upload Image</button>
+                  <button onClick={() => widgetRef.current.open()}>
+                    Upload Image
+                  </button>
                   <button>Remove Image</button>
                 </div>
               </div>
