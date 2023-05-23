@@ -4,8 +4,8 @@ import "./ProductCreate.css";
 function ProductCreate() {
   return (
     <div>
-      <Main>
-        <h1>Success</h1>
+      <Main className="product-image">
+        <h1 className="product-image title">test</h1>
       </Main>
     </div>
   );
