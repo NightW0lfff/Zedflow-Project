@@ -34,55 +34,61 @@ function ImageMockup() {
     "v1682674680/artwork/14705-artwork-dark_21cedb78-9ace-4112-bd44-57f88d4f9bc7.png"
   );
 
-  lightShirt
-    .resize(fill())
-    .overlay(
-      source(
-        image(lightLogo.publicID).transformation(
-          new Transformation().resize(fit().width(300).height(300))
-        )
-      ).position(new Position().offsetX(10).offsetY(-100))
-    );
+  console.log(lightLogo);
 
-  darkShirt
-    .resize(fill())
-    .overlay(
-      source(
-        image(darkLogo.publicID).transformation(
-          new Transformation().resize(fit().width(300).height(300))
-        )
-      ).position(new Position().offsetX(10).offsetY(-100))
-    );
+  if (lightLogo.publicID !== "") {
+    lightShirt
+      .resize(fill())
+      .overlay(
+        source(
+          image(lightLogo.publicID).transformation(
+            new Transformation().resize(fit().width(300).height(300))
+          )
+        ).position(new Position().offsetX(10).offsetY(-100))
+      );
 
-  stickers
-    .resize(fill())
-    .overlay(
-      source(
-        image(lightLogo.publicID).transformation(
-          new Transformation().resize(fit().width(800).height(800))
+    stickers
+      .resize(fill())
+      .overlay(
+        source(
+          image(lightLogo.publicID).transformation(
+            new Transformation().resize(fit().width(800).height(800))
+          )
         )
-      )
-    );
+      );
 
-  frontMugs
-    .resize(fill())
-    .overlay(
-      source(
-        image(lightLogo.publicID).transformation(
-          new Transformation().resize(fit().width(300).height(300))
-        )
-      ).position(new Position().offsetX(-80).offsetY(30))
-    );
+    frontMugs
+      .resize(fill())
+      .overlay(
+        source(
+          image(lightLogo.publicID).transformation(
+            new Transformation().resize(fit().width(300).height(300))
+          )
+        ).position(new Position().offsetX(-80).offsetY(30))
+      );
 
-  backMugs
-    .resize(fill())
-    .overlay(
-      source(
-        image(lightLogo.publicID).transformation(
-          new Transformation().resize(fit().width(300).height(300))
-        )
-      ).position(new Position().offsetX(-80).offsetY(30))
-    );
+    backMugs
+      .resize(fill())
+      .overlay(
+        source(
+          image(lightLogo.publicID).transformation(
+            new Transformation().resize(fit().width(300).height(300))
+          )
+        ).position(new Position().offsetX(-80).offsetY(30))
+      );
+  }
+
+  if (darkLogo.publicID !== "") {
+    darkShirt
+      .resize(fill())
+      .overlay(
+        source(
+          image(darkLogo.publicID).transformation(
+            new Transformation().resize(fit().width(300).height(300))
+          )
+        ).position(new Position().offsetX(10).offsetY(-100))
+      );
+  }
 
   stickers.resize(fit());
   lightLogo.resize(scale().width(128).height(128));
