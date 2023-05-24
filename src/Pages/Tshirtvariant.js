@@ -3,8 +3,10 @@ import "./Tshirtvariant.css";
 
 function Tshirtvariant() {
   return (
-    <div>
-        <main class="variant">
+    
+        <Main>
+
+            <div class="variant">
               <div class="variant-body">
                   <div class="three">
                       <div class="variant-tv">
@@ -105,8 +107,9 @@ function Tshirtvariant() {
 
                   </div>
               </div>
-          </main>
-    </div>
+              </div>
+
+          </Main>
 
 
   );

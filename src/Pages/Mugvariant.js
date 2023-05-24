@@ -3,6 +3,8 @@ import "./Mugvariant.css";
 
 function Mugvariant() {
   return (
+
+        <Main>
             <div class="mugvariant">
                 <div class="cands">
                     <div class="create">
@@ -80,6 +82,8 @@ function Mugvariant() {
                         </div>
                     </div>
                 </div>
-  )
+
+                </Main>
+  );
 }
 export default Mugvariant;
