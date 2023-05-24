@@ -16,20 +16,19 @@ const ProductList  = (props) => {
         window.location.href = url;
       };
 
-    const [records, setRecords] = useState([rows]);
+    const [records, setRecords] = useState(rows);
  
     const handleSearch = (event) => {
       const value = event.target.value
       if (value) {
-        const newList = records.filter(rows => {
-          return rows.title.includes(value.toLowerCase())
+        const newList = Array.from(records).filter(rows => {
+          return rows.tittle.includes(value)
         })
         setRecords(newList)
       } else {
         setRecords(records)
       }
   }
-
 
 
     return(
@@ -82,7 +81,8 @@ const ProductList  = (props) => {
                         </div>
                         <div className="columne1">
                           <div className="search-box">
-                            <input className ="input1" type="text" placeholder="Search..." onChange={handleSearch}/>
+                            <input className ="input1" type="text" placeholder="Search..." 
+                                  onChange={handleSearch}/>
                             <button className="button1"><SearchIcon fontSize="small"/></button>
                           </div>
                         </div>
