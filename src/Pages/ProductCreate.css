@@ -1,3 +1,22 @@
 h1 {
   color: blue;
 }
+
+.product-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+  padding: 20px;
+}
+
+.product-image.title {
+  margin: 0;
+  padding: 20px;
+}
+
+.product-image.buttons {
+  margin: 0;
+  padding: 20px;
+}
