@@ -1,9 +1,15 @@
+.Card {
+  width: 100%;
+  transform: translateX(-20px);
+}
+
 .Card-body {
     flex: 1 1 auto;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
     padding: 1.5rem;
+    width: 100%;
 }
 
 .Card-header {
