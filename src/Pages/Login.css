@@ -9,7 +9,8 @@
   align-items: center;
   justify-content: flex-start;
   position: center;
-  padding-top: 10px;
+  box-sizing: border-box;
+  padding: 1rem;
   background-color: rgba(238, 241, 241, 0.4);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -64,17 +65,18 @@ ul {
 }
 
 
-.emailIcon {
-  position: absolute;
+/*.emailIcon {
+  align-items: left;
   padding: 14px 0 0 25px;
-}
+}*/
 
 .email {
   padding-left: 70px;
   font-size: 20px;
 }
 
-@media screen and (min-width: 600px) {
+
+/*@media screen and (min-width: 600px) {
   .auth-form-container {
     padding: 3rem;
     text-align: center;
@@ -84,7 +86,8 @@ ul {
     margin: 50px auto;
     color: rgba(238, 241, 241, 0.4);
   }
-}
+}*/
+
 
 label {
   text-align: left;
@@ -122,6 +125,10 @@ button {
 
 button:hover {
   opacity: 0.8;
+}
+
+.login_google {
+  background-color: black;
 }
 
 .registerbtn {
