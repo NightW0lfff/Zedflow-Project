@@ -18,7 +18,7 @@ function ProductCreate() {
     let path = '/pcsecond';
     console.log('print');
     navigate(path);
-  }   
+  }
 
 
   return (
@@ -33,12 +33,12 @@ function ProductCreate() {
               <div class="row">
                 <div class="fp-control">
                 <div class="pc-ept">
-                <input class="fp-input" name="description" onChange={e=>setDescription(e.target.value)} value={description} type="next" placeholder="Enter Product Title" required-type="text" maxLength={25}>
+                <input class="fp-input" name="description" onChange={e=>setDescription(e.target.value)} value={description} type="next" placeholder=" Title" required-type="text" maxLength={25}>
                 </input>
                 </div>
                 <div class="pc-pt">
-                <button class="btn-check" type="submit">Check</button>
-                <button class="btn-wd" type="button" >Next</button>
+                <button class="btn-check" type="button" >Check</button>
+                <button class="btn-wd" type="button" onClick={jumpPageHandler}>Next</button>
                 </div>
                 </div>
               </div>
