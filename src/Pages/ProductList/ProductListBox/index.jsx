@@ -1,7 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-
+import { useState } from 'react';
+import SearchIcon from '@mui/icons-material/Search';
+import './style.css';
 
 const columns = [
   { field: 'id', headerName: 'NO', width: 90 },
@@ -43,12 +45,53 @@ const rows = [
   { id: 9, tittle: 'E-commerce', image: 'JPEG', sticker: 65 , image1: 'PEPE'},
 ];
 
+
 export default function DataGridDemo() {
+
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchClicked, setSearchClicked] = useState(false);
+  const [filteredRows, setFilteredRows] = useState([]);
+
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    if (!searchClicked) {
+      setSearchClicked(true);
+    }
+  };
+
+  React.useEffect(() => {
+    if (searchClicked) {
+      const newFilteredRows = rows.filter((row) =>
+        Object.values(row).some(
+          (value) =>
+            typeof value === 'string' &&
+            value.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      );
+      setFilteredRows(newFilteredRows);
+    }
+  }, [searchQuery, searchClicked]);
+  
+
   return (
     <Box sx={{ height: 400, width: '100%' }}>
+      <div className='search-box'>
+        <input
+        className="input1"
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={handleSearchQueryChange}
+      />
+        <button className="button1" 
+                onClick={handleButtonClick}> <SearchIcon fontSize="small"/> </button>
+      </div>
+      
       <DataGrid 
-        rows={rows}
-        columns={columns}
+        columns={columns} rows={searchClicked ? filteredRows : rows}
         initialState={{
           pagination: {
             paginationModel: {
@@ -59,6 +102,11 @@ export default function DataGridDemo() {
         pageSizeOptions={[8]}
         checkboxSelection
         disableRowSelectionOnClick
+        componentsProps={{
+          toolbar: {
+            showQuickFilter: false,
+          },
+        }}
       />
     </Box>
   );

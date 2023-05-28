@@ -3,10 +3,7 @@ import Sidebar from "../../Components/Sidebar";
 import { Breadcrumbs, Link, Typography} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import './style.css';
-import SearchIcon from '@mui/icons-material/Search';
 import DataGridDemo from "./ProductListBox";
-import { useState } from "react";
-import rows from "./ProductListBox/index.jsx"
 
 const ProductList  = (props) => {
 
@@ -15,21 +12,7 @@ const ProductList  = (props) => {
         const url = "http://zed.umbrellaink.com.au/export?data=[]";
         window.location.href = url;
       };
-
-    const [records, setRecords] = useState(rows);
- 
-    const handleSearch = (event) => {
-      const value = event.target.value
-      if (value) {
-        const newList = Array.from(records).filter(rows => {
-          return rows.tittle.includes(value)
-        })
-        setRecords(newList)
-      } else {
-        setRecords(records)
-      }
-  }
-
+    
 
     return(
     <container>
@@ -78,13 +61,6 @@ const ProductList  = (props) => {
                             Regenerate Files
                             </button>
                         </form>
-                        </div>
-                        <div className="columne1">
-                          <div className="search-box">
-                            <input className ="input1" type="text" placeholder="Search..." 
-                                  onChange={handleSearch}/>
-                            <button className="button1"><SearchIcon fontSize="small"/></button>
-                          </div>
                         </div>
                     </div>
                     <div >
