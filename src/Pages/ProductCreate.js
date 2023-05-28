@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Main from "../Components/Main";
+import { useNavigate } from "react-router-dom";
 import "./ProductCreate.css";
 
 
@@ -10,9 +11,14 @@ function ProductCreate() {
       e.preventDefault()
       console.log(description)  
   }
-  const data = [
-    {"description":""}
-  ]    
+
+
+  let navigate = useNavigate();
+  const jumpPageHandler = () =>{
+    let path = '/pcsecond';
+    console.log('print');
+    navigate(path);
+  }   
 
 
   return (
