@@ -108,7 +108,7 @@ export const Login = () => {
               <LockIcon classname="passIcon" />
               <label for="password"> </label>
               <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" ref={userRef} name="password" /> </ul>
-            <button type="submit">
+            <button classname="submit_btn" type="submit">
               <a href="/" style={{ color: "#FFFFFF" }}> Sign In </a> </button>
             <label>
               <input type="checkbox" checked="checked" name="remember" /> Remember me
