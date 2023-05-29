@@ -13,12 +13,12 @@ function Main(props) {
           </div>
         </nav>
         <div className="nav-top-header">
-          <h2>This is a title</h2>
+          <h2>Product Create</h2>
         </div>
 
         <div className="main-container">
           <div className="main-box">
-            <h1>This is a content</h1>
+            <h1></h1>
             {props.children}
           </div>
         </div>
