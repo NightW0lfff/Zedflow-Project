@@ -33,6 +33,7 @@ const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async () => {
     try {
+        const googleProvider = new GoogleAuthProvider();
         const res = await signInWithPopup(auth, googleProvider);
         const user = res.user;
         const q = query(collection(db, "users"), where("uid", "==", user.uid));
@@ -42,7 +43,7 @@ const signInWithGoogle = async () => {
                 uid: user.uid,
                 name: user.displayName,
                 authProvider: "google",
-                email: user.email,
+                Email: user.Email,
             });
         }
     } catch (err) {
@@ -50,32 +51,34 @@ const signInWithGoogle = async () => {
         alert(err.message);
     }
 };
-const logInWithEmailAndPassword = async (email, password) => {
+const logInWithEmailAndPassword = async (Email, pass) => {
     try {
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, Email, pass);
     } catch (err) {
         console.error(err);
         alert(err.message);
     }
 };
-const registerWithEmailAndPassword = async (name, email, password) => {
+const registerWithEmailAndPassword = async (Email, pass, rememberMe) => {
     try {
-        const res = await createUserWithEmailAndPassword(auth, email, password);
+        const res = await createUserWithEmailAndPassword(auth, Email, pass);
         const user = res.user;
         await addDoc(collection(db, "users"), {
             uid: user.uid,
-            name,
             authProvider: "local",
-            email,
+            Email,
         });
+        if (rememberMe) {
+            // Save user authentication data to local storage or implement session management
+        }
     } catch (err) {
         console.error(err);
         alert(err.message);
     }
 };
-const sendPasswordReset = async (email) => {
+const sendPasswordReset = async (Email) => {
     try {
-        await sendPasswordResetEmail(auth, email);
+        await sendPasswordResetEmail(auth, Email);
         alert("Password reset link sent!");
     } catch (err) {
         console.error(err);
@@ -92,6 +95,7 @@ export {
     signInWithEmailAndPassword,
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
+    createUserWithEmailAndPassword,
     sendPasswordReset,
     sendPasswordResetEmail,
     logout,

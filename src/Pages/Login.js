@@ -7,22 +7,49 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 
 
+
 function Login() {
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      return;
+    // if (loading) {
+    // maybe trigger a loading screen
+    //  return;
+    //}
+    if (user) {
+      navigate("/Components");
     }
-    if (user) navigate("/Components");
-  }, [user, loading]);
+  }, [user, navigate]);
 
+  const handleRememberMeChange = () => {
+    setRememberMe(!rememberMe);
+  };
+
+  const handleSignIn = () => {
+    signInWithEmailAndPassword(email, pass)
+      .then(() => {
+        setSuccess(true);
+      })
+      .catch((error) => {
+        setErrMsg(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then(() => {
+        setSuccess(true);
+      })
+      .catch((error) => {
+        setErrMsg(error.message);
+      });
+  };
 
 
   return (
@@ -30,16 +57,21 @@ function Login() {
     <>
       {success ? (
         <div>
-          <h1> You are successfully logged in!</h1> <br />
+
+          <h1> Success!</h1>
           <p>
-            <a href="#"> Go to Homepage</a>
-
+            <a href="./Components"></a>
           </p>
-
         </div>
       ) : (
 
         <div className="auth-form-container">
+
+          <img
+            src="/zedflow-logo.png"
+            alt="Zedflow Logo"
+            className="login-logo"
+          />
 
           <p className={errMsg ? "errmsg" :
             "offscreen"} aria-live="assertive" >{errMsg}</p>
@@ -59,14 +91,14 @@ function Login() {
             </ul>
             <button type="submit" onClick={() => signInWithEmailAndPassword(email, pass)}>
               <a href="/" style={{ color: "#FFFFFF" }}> Sign In </a> </button>
-            <button className="login_google" onClick={signInWithGoogle}>
+            <button className="login_google" onClick={handleGoogleSignIn}>
               Login with Google
             </button>
             <div>
               <Link style={{ color: "#1E90FF" }} to={"/reset"}>Forgot Password</Link>
             </div>
             <label>
-              <input type="checkbox" checked="checked" name="remember" /> Remember me
+              <input type="checkbox" checked={rememberMe} onChange={handleRememberMeChange} name="remember" /> Remember me
             </label>
           </form>
 

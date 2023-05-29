@@ -18,6 +18,7 @@ function Register(props) {
     const [Email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false);
     const [EmailFocus, setEmailFocus] = useState(false);
+    const [rememberMe, setRememberMe] = useState(false);
 
     const [pass, setPass] = useState('');
     const [validPass, setValidPass] = useState(false);
@@ -51,7 +52,7 @@ function Register(props) {
 
     const register = () => {
         if (!Email) alert("Please enter email");
-        registerWithEmailAndPassword(Email, pass);
+        registerWithEmailAndPassword(Email, pass, rememberMe);
     };
     useEffect(() => {
         if (loading) return;
@@ -71,10 +72,17 @@ function Register(props) {
                 </div>
             ) : (
                 <div className="rcontainer">
+                    <img
+                        src="/zedflow-logo.png"
+                        alt="Zedflow Logo"
+                        className="login-logo"
+                    />
+
                     <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Register</h1>
+
                     <p> Please fill in this form to create an account.</p>
-                    <form className="register-form">
+                    <form className="register-form" method="POST">
                         <label htmlFor="email">
                             Email:
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
@@ -132,6 +140,15 @@ function Register(props) {
                             onClick={signInWithGoogle}>
                             Register with Google
                         </button>
+                        {/*<label>
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                className="remember"
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                                name="remember"
+                            />Remember me
+            </label>*/}
                     </form>
                     <div>
                         <p> Already have an account?
