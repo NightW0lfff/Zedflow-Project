@@ -18,14 +18,12 @@ function Login() {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
-    // if (loading) {
-    // maybe trigger a loading screen
-    //  return;
-    //}
-    if (user) {
-      navigate("/Components");
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
     }
-  }, [user, navigate]);
+    if (user) navigate("/Component");
+  }, [user, loading]);
 
   const handleRememberMeChange = () => {
     setRememberMe(!rememberMe);
