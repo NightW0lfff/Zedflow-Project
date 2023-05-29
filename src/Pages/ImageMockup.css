@@ -6,12 +6,11 @@ h1 {
 .main-box {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin: 0;
   padding: 40px 3%;
   gap: 20px;
-  width: fit-content;
 }
 
 .product-image {
@@ -30,6 +29,12 @@ h1 {
   box-shadow: none;
 }
 
+.disabled-link {
+  /* Add your styles for the disabled link here */
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .product-image.buttons {
   flex-wrap: wrap;
   justify-content: center;
@@ -41,6 +46,7 @@ h1 {
 
 button:hover {
   box-shadow: 1px 1px 5px 1px #888888;
+  cursor: pointer;
 }
 
 .product-image.buttons button {
@@ -102,13 +108,18 @@ button:hover {
   border-radius: 10px;
 }
 
-.image-box {
+.image-box,
+.image-box-dark {
   min-width: 5vw;
   min-height: 5vw;
   background-color: #fff;
   margin: 10px;
   margin-top: 0;
   border: 0.5px solid #00000061;
+}
+
+.image-box-dark {
+  background-color: #888888;
 }
 
 .image-btn {
