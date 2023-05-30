@@ -79,7 +79,7 @@ function ImageMockup() {
         }
       }
     );
-  }, []); // Empty dependency array to ensure the effect runs only once;
+  }); // Empty dependency array to ensure the effect runs only once;
 
   const openWidget = (productType) => {
     setCurrentProduct(productType);
