@@ -54,6 +54,7 @@ function ImageMockup() {
                 ...prevIds,
                 dShirtId: info.public_id,
               }));
+              console.log(productIds);
               break;
             case "sticker":
               setProductIds((prevIds) => ({
@@ -79,7 +80,7 @@ function ImageMockup() {
         }
       }
     );
-  }, []); // Empty dependency array to ensure the effect runs only once;
+  }); // Empty dependency array to ensure the effect runs only once;
 
   const openWidget = (productType) => {
     setCurrentProduct(productType);
