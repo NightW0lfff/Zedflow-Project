@@ -58,7 +58,7 @@ function PCsecond() {
     '',
     '',
     '',
-    // ...其他类别
+    
   ]);
 
   const [keywordItems, setKeywordItems] = useState([
@@ -118,7 +118,7 @@ function PCsecond() {
     '',
     '',
     '',
-    // ...其他关键词
+    
   ]);
 
 

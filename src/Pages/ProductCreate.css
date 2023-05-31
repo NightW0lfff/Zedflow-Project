@@ -324,7 +324,7 @@ width: 50%;
 }
 
 .pc-stickers{
-width:  ;
+/* width:  ; */
 }
 
 .pc-mugs{
@@ -355,10 +355,8 @@ border-radius: 5px;
 text-align: center;
 border: solid;
 font-size: 18px;
-display: flex;
 }
 .form-group{
-border: solid;
 width: auto;
 height: 30px;
 display: flex;
@@ -404,7 +402,7 @@ width: 60%;
 
 .pc-cg{
 width: 20%;
-border: solid;
+/* border: solid; */
 text-align: center;
 vertical-align: middle;
 }
@@ -415,7 +413,7 @@ vertical-align: middle;
 
 .pc-kw{
 width: 20%;
-border: solid;
+/* border: solid; */
 text-align: center;
 vertical-align: middle;
 }

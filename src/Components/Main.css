@@ -26,6 +26,7 @@ container {
   padding: 0;
   gap: 0;
   user-select: none;
+  overflow: hidden;
 }
 
 .nav-top {
@@ -72,7 +73,7 @@ container {
   background-color: #ffffff;
   width: 100%;
   height: fit-content;
-  height: 75vh;
+  min-height: 75vh;
   border-radius: 10px;
 }
 

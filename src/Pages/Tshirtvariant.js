@@ -10,9 +10,8 @@ function Tshirtvariant() {
   const [action, setAction] = useState("");
 
   const handleCreateVariant = () => {
-    // Add your logic here to handle the creation of a new variant
-    // You can access the values of gender, size, color, and action
-    // and perform the necessary operations or API calls.
+    
+    
     console.log("New variant created!");
     console.log("Gender:", gender);
     console.log("Size:", size);
