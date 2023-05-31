@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
     auth,
     registerWithEmailAndPassword,
@@ -50,24 +51,43 @@ function Register(props) {
     }, [Email, pass, matchPass])
 
 
-    const register = () => {
-        if (!Email) alert("Please enter email");
-        registerWithEmailAndPassword(Email, pass, rememberMe);
+    const register = async () => {
+        try {
+            if (!Email) {
+                alert("Please enter email");
+                return;
+            }
+            await registerWithEmailAndPassword(Email, pass, rememberMe);
+            setSuccess(true); // Set success state to true
+        } catch (error) {
+            if (error.code === "auth/popup-closed-by-user") {
+                // Handle popup closed by user
+                alert("Sign-in process was canceled");
+            } else {
+                // Handle other Firebase authentication errors
+                console.log("Firebase authentication error:", error);
+            }
+        }
     };
     useEffect(() => {
         if (loading) return;
-        if (user) navigate.replace("/Components");
-    }, [user, loading]);
+        // if (user) navigate("/Components");
+    }, [user, loading, navigate]);
 
 
 
     return (
         <>
             {success ? (
-                <div classname="rcontainer">
-                    <h1> Success!</h1>
+                <div>
+                    <img
+                        src="/zedflow-logo.png"
+                        alt="Zedflow Logo"
+                        className="login-logo"
+                    />
+                    <h1> Your registration is successful</h1>
                     <p>
-                        <a href="./Login">Sign In</a>
+                        Please click on  <Link style={{ color: "#1E90FF" }} to="/Login">Sign In</Link>
                     </p>
                 </div>
             ) : (
@@ -82,7 +102,7 @@ function Register(props) {
                     <h1>Register</h1>
 
                     <p> Please fill in this form to create an account.</p>
-                    <form className="register-form" method="POST">
+                    <div className="register-form">
                         <label htmlFor="email">
                             Email:
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
@@ -134,7 +154,7 @@ function Register(props) {
                         </p>
                         <p>By creating an account you agree to our <a style={{ color: "#1E90FF" }} href="#">Terms & Privacy</a>.</p>
 
-                        <button type="submit" className="registerbtn" onClick={register}> Sign Up</button>
+                        <button type="" className="registerbtn" onClick={register}> Sign Up</button>
                         <button
                             className="register__google"
                             onClick={signInWithGoogle}>
@@ -149,7 +169,7 @@ function Register(props) {
                                 name="remember"
                             />Remember me
             </label>*/}
-                    </form>
+                    </div>
                     <div>
                         <p> Already have an account?
                             <span>
