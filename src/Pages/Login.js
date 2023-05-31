@@ -104,7 +104,7 @@ function Login() {
               type="submit"
               onClick={() => signInWithEmailAndPassword(email, pass)}
             >
-              <a href="/product" style={{ color: "#FFFFFF" }}>
+              <a href="/products/create" style={{ color: "#FFFFFF" }}>
                 {" "}
                 Sign In{" "}
               </a>{" "}
