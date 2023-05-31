@@ -17,6 +17,9 @@ import {
     addDoc,
 } from "firebase/firestore";
 
+
+
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyAKhv0R-2dtdtzgc6oSr1EEUq4YCs3Tm8o",
@@ -43,9 +46,10 @@ const signInWithGoogle = async () => {
                 uid: user.uid,
                 name: user.displayName,
                 authProvider: "google",
-                Email: user.Email,
+                Email: user.email,
             });
         }
+
     } catch (err) {
         console.error(err);
         alert(err.message);
@@ -71,6 +75,7 @@ const registerWithEmailAndPassword = async (Email, pass, rememberMe) => {
         if (rememberMe) {
             // Save user authentication data to local storage or implement session management
         }
+
     } catch (err) {
         console.error(err);
         alert(err.message);
@@ -88,6 +93,7 @@ const sendPasswordReset = async (Email) => {
 const logout = () => {
     signOut(auth);
 };
+
 export {
     auth,
     db,
