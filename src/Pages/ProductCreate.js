@@ -3,43 +3,74 @@ import Main from "../Components/Main";
 import { useNavigate } from "react-router-dom";
 import "./ProductCreate.css";
 
-
 function ProductCreate() {
-  
-  const [description,setDescription] = useState("")
-  function handleSubmite(e){
-      e.preventDefault()
-      console.log(description)  
+  const [description, setDescription] = useState("");
+  const [isContentRecognized, setContentRecognized] = useState(false);
+
+  function handleSubmite(e) {
+    e.preventDefault();
+    console.log(description);
   }
 
-
   let navigate = useNavigate();
-  const jumpPageHandler = () =>{
-    let path = '/pcsecond';
-    console.log('print');
+  const jumpPageHandler = () => {
+    let path = "/pcsecond";
+    console.log("print");
     navigate(path);
   }
 
+  function handleCheck() {
+    // TODO: 根据填写内容进行识别，更新isContentRecognized状态
+    
+    const isRecognized = true; // 假设识别结果为true
+
+    setContentRecognized(isRecognized);
+
+    if (isRecognized) {
+      window.alert("Checked");
+    } else {
+      window.alert("Unrecognized，try again");
+    }
+  }
 
   return (
     <div>
       <Main>
-
-      <form role="form" method="post" onSubmit={handleSubmite} class>
+        <form role="form" method="post" onSubmit={handleSubmite} class>
           <div class="front">
             <div class="pc-pt-1">
               <h1>Product Title</h1>
               <hr></hr>
               <div class="row">
                 <div class="fp-control">
-                <div class="pc-ept">
-                <input class="fp-input" name="description" onChange={e=>setDescription(e.target.value)} value={description} type="next" placeholder=" Title" required-type="text" maxLength={25}>
-                </input>
-                </div>
-                <div class="pc-pt">
-                <button class="btn-check" type="button" >Check</button>
-                <button class="btn-wd" type="button" onClick={jumpPageHandler}>Next</button>
-                </div>
+                  <div class="pc-ept">
+                    <input
+                      class="fp-input"
+                      name="description"
+                      onChange={(e) => setDescription(e.target.value)}
+                      value={description}
+                      type="next"
+                      placeholder=" Title"
+                      required-type="text"
+                      maxLength={25}
+                    />
+                  </div>
+                  <div class="pc-pt">
+                    <button class="btn-check" type="button" onClick={handleCheck}>
+                      Check
+                    </button>
+                    <div>
+                      {isContentRecognized ? (
+                        <button class="btn-wd" type="button" onClick={jumpPageHandler}>
+                          Next
+                        </button>
+                      ) : (
+                        <button class="btn-retry" type="button" onClick={handleCheck}>
+                          Retry
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -69,7 +100,6 @@ function ProductCreate() {
             </div>
           </div>
         </form>
-
       </Main>
     </div>
   );
