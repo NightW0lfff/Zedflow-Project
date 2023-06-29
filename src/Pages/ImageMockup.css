@@ -39,7 +39,6 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   background-color: #e6e6e6;
-  /* width: 550px; */
   width: fit-content;
   height: fit-content;
 }
