@@ -54,6 +54,7 @@ function ImageMockup() {
                 ...prevIds,
                 dShirtId: info.public_id,
               }));
+              console.log(productIds);
               break;
             case "sticker":
               setProductIds((prevIds) => ({
