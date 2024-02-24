@@ -18,7 +18,7 @@ function Main(props) {
 
         <div className="main-container">
           <div className="main-box">
-            <h1></h1>
+            {/* <h1></h1> */}
             {props.children}
           </div>
         </div>
